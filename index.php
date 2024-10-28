@@ -1,6 +1,6 @@
 <?php
 // Connect to database
-include "db.php";
+include "inc/db.php";
 
 // Insert new contact
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -61,26 +61,32 @@ $contacts = $conn->query("SELECT * FROM contacts");
 
         <!-- Contact List -->
         <h4>Contact List</h4>
-        <table class="table table-bordered table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while($contact = $contacts->fetch_assoc()): ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($contact['name']); ?></td>
-                    <td><?php echo htmlspecialchars($contact['email']); ?></td>
-                    <td><?php echo htmlspecialchars($contact['phone']); ?></td>
-                    <td><?php echo htmlspecialchars($contact['address']); ?></td>
-                </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php while($contact = $contacts->fetch_assoc()): ?>
+        <tr>
+            <td><?php echo htmlspecialchars($contact['name']); ?></td>
+            <td><?php echo htmlspecialchars($contact['email']); ?></td>
+            <td><?php echo htmlspecialchars($contact['phone']); ?></td>
+            <td><?php echo htmlspecialchars($contact['address']); ?></td>
+            <td>
+                <button class="btn btn-warning">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+        <?php endwhile; ?>
+    </tbody>
+</table>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
