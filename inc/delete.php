@@ -17,6 +17,5 @@ if (isset($_GET['id'])) {
 }
 
 // Redirect back to main page
-header("Location: index.php");
-exit();
+header("Location: contact.php");
 ?>
