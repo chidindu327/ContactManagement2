@@ -1,6 +1,6 @@
 <?php
 // Connect to database
-include "inc/db.php";
+include 'inc/db.php';
 
 // Insert new contact
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -79,17 +79,22 @@ $contacts = $conn->query("SELECT * FROM contacts");
             <td><?php echo htmlspecialchars($contact['phone']); ?></td>
             <td><?php echo htmlspecialchars($contact['address']); ?></td>
             <td>
-                <button class="btn btn-warning">Edit</button>
-                <button class="btn btn-danger">Delete</button>
+                <a href="edit.php?id=<?php echo $contact['id']; ?>">
+                    <button class="btn btn-warning">Edit</button>
+                </a>
+                <a href="inc/delete.php?id=<?php echo $contact['id']; ?>" onclick="return confirm('Are you sure you want to delete this contact?');">
+                    <button class="btn btn-danger">Delete</button>
+                </a>
             </td>
         </tr>
         <?php endwhile; ?>
+        
     </tbody>
 </table>
+
 
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
