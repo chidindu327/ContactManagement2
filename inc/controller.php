@@ -3,7 +3,7 @@
 function fetchdata($query)
 {
     //include db connection
-    include "dp.php";
+    include "db.php";
     // Execute query
     $result = $conn->query($query);
 
@@ -24,7 +24,7 @@ function fetchdata($query)
 function fetch($query)
 {
     //include db connection
-    include "dp.php";
+    include "db.php";
     // Execute query
     $result = $conn->query($query);
 
@@ -41,7 +41,7 @@ function fetch($query)
 // Function to execute an INSERT query
 function execute($query) {
     //include db connection
-    include "dp.php";
+    include "db.php";
 
     // Execute the insert query
     if ($conn->query($query) === TRUE) {
